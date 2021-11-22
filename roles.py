@@ -23,3 +23,7 @@ class Voyante(Villageois):
         if self.type == "player":
             for i, player in enumerate(all_players):
                 print(f"{i} - {player.name}")
+            n = int(input("Quelle personne voulez vous sonder ?"))
+            name = all_players[n].name
+            identity = all_players[n].__class__.__name__
+            print(f"Identité de {name} : {identity}")

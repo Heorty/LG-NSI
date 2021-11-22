@@ -18,10 +18,13 @@ random.choice(list(players.values()))[-1].set_player()
 
 
 def get_all_players(players: Dict[str, roles.Villageois]):
-    return sum(players.values(), [])
+    p = sum(players.values(), [])
+    random.shuffle(p)
+    return p
 
 
 game = True
 while game:
+    print("La voyante se réveille")
     players["voyante"][0].turn(get_all_players(players))
     input("pass")

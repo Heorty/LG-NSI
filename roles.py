@@ -10,7 +10,7 @@ for row in csvfile:
 
 
 class Villageois:
-    def __init__(self, name):
+    def __init__(self):
         self.type = "bot"
         self.name = random.choice(prenoms)
 
@@ -27,6 +27,7 @@ class Villageois:
 class LoupGarou(Villageois):
     def turn(self, all_players):
         pass
+
 
 class Voyante(Villageois):
     def turn(self, all_players):

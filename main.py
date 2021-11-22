@@ -3,16 +3,10 @@ import random
 import roles
 
 
-def getName():
-    return random.choice(
-        ["Laure", "Pablo", "Julien", "Eli", "a", "b", "c", "d", "e", "f"]
-    )
-
-
 players = {
-    "villageois": [roles.Villageois(getName()) for _ in range(3)],
-    "loups_garous": [roles.LoupGarou(getName()) for _ in range(3)],
-    "voyante": [roles.Voyante(getName())]
+    "villageois": [roles.Villageois() for _ in range(3)],
+    "loups_garous": [roles.LoupGarou() for _ in range(3)],
+    "voyante": [roles.Voyante()]
 }
 random.choice(list(players.values()))[-1].set_player()
 

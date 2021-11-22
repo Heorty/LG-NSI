@@ -1,8 +1,8 @@
 import csv
 import random
 
-f= open ("./prenom.csv")
-csvfile = csv.reader(f)
+file = open("./prenom.csv")
+csvfile = csv.reader(file)
 prenoms = []
 
 for row in csvfile:

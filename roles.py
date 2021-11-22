@@ -13,6 +13,7 @@ class Villageois:
     def __init__(self):
         self.type = "bot"
         self.name = random.choice(prenoms)
+        self.alive = True
 
     def set_player(self):
         self.type = "player"
@@ -21,7 +22,7 @@ class Villageois:
         pass
 
     def kill(self):
-        pass
+        self.alive = False
 
 
 class LoupGarou(Villageois):
@@ -32,8 +33,11 @@ class LoupGarou(Villageois):
 class Voyante(Villageois):
     def turn(self, all_players):
         if self.type == "player":
-            for i, player in enumerate(all_players):
-                print(f"{i} - {player.name}")
+            i = 0
+            for player in all_players:
+                if player.alive:
+                    print(f"{i} - {player.name}")
+                    i += 1
             n = int(input("Quelle personne voulez vous sonder ?"))
             name = all_players[n].name
             identity = all_players[n].__class__.__name__

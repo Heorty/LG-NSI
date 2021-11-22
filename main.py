@@ -2,29 +2,34 @@ from typing import Dict
 import random
 import roles
 
+def setup():
+    pass
 
-def getName():
-    return random.choice(
-        ["Laure", "Pablo", "Julien", "Eli", "a", "b", "c", "d", "e", "f"]
-    )
+def day():
+    pass
 
+def night():
+    pass
+
+def sideEvent():
+    pass
 
 players = {
-    "villageois": [roles.Villageois(getName()) for _ in range(3)],
-    "loups_garous": [roles.LoupGarou(getName()) for _ in range(3)],
-    "voyante": [roles.Voyante(getName())]
+    "villageois": [roles.Villageois() for _ in range(3)],
+    "loups_garous": [roles.LoupGarou() for _ in range(3)]
 }
 random.choice(list(players.values()))[-1].set_player()
 
 
 def get_all_players(players: Dict[str, roles.Villageois]):
-    p = sum(players.values(), [])
-    random.shuffle(p)
-    return p
+    return sum(players.values(), [])
 
 
 game = True
+
+
+setup()
 while game:
-    print("La voyante se réveille")
-    players["voyante"][0].turn(get_all_players(players))
-    input("pass")
+    night()
+    sideEvent()
+    day()

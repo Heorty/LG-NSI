@@ -18,4 +18,4 @@ game = True
 while game:
     for player in get_all_players(players):
         print(player.type)
-    input()
+    input("pass")

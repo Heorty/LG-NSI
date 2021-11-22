@@ -33,3 +33,9 @@ while game:
     night()
     sideEvent()
     day()
+    
+    print("Le village s'endort")
+    print("La voyante se réveille")
+    players["voyante"][0].turn(get_all_players(players))
+    print("Les loups-garous se réveillent")
+    input("pass")

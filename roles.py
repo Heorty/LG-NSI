@@ -11,6 +11,7 @@ for row in csvfile:
 
 class Villageois:
     def __init__(self):
+        self.className = "Simple villageois"
         self.type = "bot"
         self.name = random.choice(prenoms)
         self.alive = True
@@ -21,11 +22,16 @@ class Villageois:
     def turn(self, all_players):
         pass
 
-    def onDeath(self, all_players):
+    def onDeath(self):
         self.alive = False
 
 
 class LoupGarou(Villageois):
+    def __init__(self):
+        super().__init__()
+        self.className = "Loup Garou"
+
+
     def turn(self, all_players, response):
         if self.type == "player":
             print("Choix des autres loups-garous:",
@@ -36,11 +42,20 @@ class LoupGarou(Villageois):
                     print(f"{i} - {player.name}")
                     i += 1
             n = int(input("Quelle personne voulez vous tuer ?"))
+            return n
         else:
             return random.randint(0, sum(player.alive and not isinstance(player, LoupGarou) for player in all_players)-1)
 
 
 class Voyante(Villageois):
+    def __init__(self):
+        super().__init__()
+        self.className = "Voyante"
+
+    def __init__(self):
+        super().__init__(2)
+        self.className = "Voyante"
+
     def turn(self, all_players):
         if self.type == "player":
             i = 0
@@ -54,8 +69,9 @@ class Voyante(Villageois):
             print(f"Identité de {name} : {identity}")
 
 class Chasseur(Villageois):
-    def turn(self, all_players):
-        pass
+    def __init__(self):
+        super().__init__()
+        self.className = "Chasseur"
 
     def onDeath(self, all_players):
         if self.type == "player":
@@ -73,5 +89,45 @@ class Chasseur(Villageois):
         return super().kill()
 
 class Sorciere(Villageois):
-    def turn(self, all_players):
-        pass
+    def __init__(self):
+        super().__init__()
+        self.className = "Chasseur"
+        self.potions = {
+            "save": True,
+            "kill": True
+        }
+
+    def turn(self, all_players, killed):
+        if self.type == "player":
+            print(f"Cette personne a été tué: {killed.name}")
+            print("Voulez-vous la sauver, ne rien faire ou tuer une autre personne?")
+            while True:
+                choice = int(input("sauver (0), ne rien faire (1), tuer (2)"))
+                if choice == 0:
+                    if self.potions["save"]:
+                        return {
+                            "saved": True
+                        }
+                    else:
+                        print("vous ne pouvez pas réutiliser cette potion")
+                elif choice == 1:
+                    return {
+                        "saved": False
+                    }
+                elif choice == 2:
+                    i = 0
+                    for player in all_players:
+                        if player.alive and not isinstance(player, Sorciere):
+                            print(f"{i} - {player.name}")
+                            i += 1
+                    n = int(input("Quelle personne voulez vous tuez ?"))
+                    for player in get_all_players(players):
+                        if player.alive and not isinstance(player, Sorciere) and i == n:
+                            killed = player
+                            break
+                    return {
+                        "saved": False,
+                        "killed": killed
+                    }
+
+

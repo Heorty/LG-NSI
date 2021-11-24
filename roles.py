@@ -68,7 +68,7 @@ class Voyante(Villageois):
                         break
                     i += 1
             name = choice.name
-            identity = choice.__class__.__name__
+            identity = choice.className
             print(f"Identité de {name} : {identity}")
 
 class Chasseur(Villageois):
@@ -92,7 +92,7 @@ class Chasseur(Villageois):
                         break
                     i += 1
             name = choice.name
-            identity = choice.__class__.__name__
+            identity = choice.className
             print(f"Identité de {name} : {identity}")
 
 

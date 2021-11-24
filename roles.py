@@ -77,37 +77,7 @@ class Chasseur(Villageois):
         self.className = "Chasseur"
 
     def onDeath(self, all_players):
-        if self.type == "player":
-            i = 0
-            for player in all_players:
-                if player.alive and not isinstance(player, Chasseur):
-                    print(f"{i} - {player.name}")
-                    i += 1
-                    n = int(input("Quelle personne voulez vous tuez ?"))
-                    i = 0
-            for player in all_players:
-                if player.alive and not isinstance(player, Chasseur):
-                        if i == n:
-                            killed = player
-                            break
-                        i += 1
-            return {
-                "saved": False,
-                "killed": killed
-            }
-        else:
-            n = random.randint(0, sum(player.alive and not isinstance(player, Chasseur) for player in all_players)-1)
-            i = 0
-            for player in all_players:
-                if player.alive and not isinstance(player, Chasseur):
-                    if i == n:
-                        killed = player
-                        break
-                    i += 1
-            return {
-                "saved": False,
-                "killed": killed
-                }
+        pass
             
 
 class Sorciere(Villageois):
@@ -173,7 +143,7 @@ class Sorciere(Villageois):
                     }
                 elif choice == 2 and self.potions["kill"]:
                     self.potions["kill"] = False
-                    n = random.randint(0, sum(player.alive and not isinstance(player, Sorciere) for player in all_players))
+                    n = random.randint(0, sum(player.alive and not isinstance(player, Sorciere) for player in all_players)-1)
                     i = 0
                     for player in all_players:
                         if player.alive and not isinstance(player, Sorciere):

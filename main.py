@@ -16,6 +16,10 @@ def night():
     print("La voyante se réveille")
     players["voyante"][0].turn(get_all_players(players))
     print("Les loups-garous se réveillent")
+    response = []
+    for loup_garou in players["loups_garous"]:
+        response.append(loup_garou.turn(get_all_players(players), response))
+    print(response)
 
 
 def sideEvent():

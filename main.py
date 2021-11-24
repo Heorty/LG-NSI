@@ -38,6 +38,7 @@ while game:
     for player in get_all_players(players):
         if player.alive and not isinstance(player, roles.LoupGarou) and i == response[-1]:
             killed = player
+            break
     
     print("La sorciere")
     players["sorciere"][0].turn(get_all_players(players), killed)

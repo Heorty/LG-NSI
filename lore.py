@@ -1,6 +1,6 @@
 import random
 
-def debutjour():
+def finjour():
     debphrase = ["il fait froid, les loups-garou rodent dans la nature. le village s'endort malgrès cette insécurité en cette nuit de pleine Lune d'hiver",
                  "apres cette journée epuisante le village se rendort",
                  "les supçons commence à se faire, mais le village, fatigué se rendort..."]

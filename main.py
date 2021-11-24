@@ -25,13 +25,14 @@ game = True
 
 
 while game:
+    lore.finjour()
 
-    print("Le village s'endort")
-    print("La voyante se réveille")
+    lore.voyante(False)
     turn = get_all_players(players)
     players["voyante"][0].turn(turn)
+    lore.voyante(True)
 
-    print("Les loups-garous se réveillent")
+    lore.loup_garou(False)
     response = []
     for loup_garou in players["loups_garous"]:
         response.append(loup_garou.turn(turn, response))
@@ -42,8 +43,9 @@ while game:
                 killed = player
                 break
             i += 1
-    
-    print("La sorciere")
+    lore.loup_garou(True)
+
+
     sorciere_choice = players["sorciere"][0].turn(turn, killed)
 
     input("pass")

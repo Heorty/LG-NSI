@@ -1,1 +1,5 @@
-coucou c'est bien
+ajoutez le vote des villageois
+recap des morts de la nuit / evenement
+donner son role au joueur ( qu'il le connaisse)
+ameliorer les messages
+recap du vote des loups ( savoir qui est voté )

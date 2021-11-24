@@ -53,4 +53,5 @@ while game:
         sorciere_choice.get("killed").onDeath(turn)
     lore.sorciere(True)
 
+    lore.finnuit()
     input("pass")

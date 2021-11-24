@@ -55,4 +55,4 @@ while game:
     lore.sorciere(True)
 
 
-    input("pass")
+    input("passssss")

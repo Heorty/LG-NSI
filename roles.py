@@ -28,15 +28,16 @@ class Villageois:
 class LoupGarou(Villageois):
     def turn(self, all_players, response):
         if self.type == "player":
-            print("Choix des autres loups-garous:", " ".join(map(str, response)))
+            print("Choix des autres loups-garous:",
+                  " - ".join(map(str, response)))
             i = 0
             for player in all_players:
-                if player.alive:
+                if player.alive and not isinstance(player, LoupGarou):
                     print(f"{i} - {player.name}")
                     i += 1
             n = int(input("Quelle personne voulez vous tuer ?"))
         else:
-            return random.randint(0, sum(player.alive for player in all_players)-1)
+            return random.randint(0, sum(player.alive and not isinstance(player, LoupGarou) for player in all_players)-1)
 
 
 class Voyante(Villageois):
@@ -44,7 +45,7 @@ class Voyante(Villageois):
         if self.type == "player":
             i = 0
             for player in all_players:
-                if player.alive:
+                if player.alive and not isinstance(player, Voyante):
                     print(f"{i} - {player.name}")
                     i += 1
             n = int(input("Quelle personne voulez vous sonder ?"))

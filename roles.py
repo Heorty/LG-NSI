@@ -21,7 +21,7 @@ class Villageois:
     def turn(self, all_players):
         pass
 
-    def kill(self):
+    def onDeath(self, all_players):
         self.alive = False
 
 
@@ -51,3 +51,26 @@ class Voyante(Villageois):
             name = all_players[n].name
             identity = all_players[n].__class__.__name__
             print(f"Identité de {name} : {identity}")
+
+class Chasseur(Villageois):
+    def turn(self, all_players):
+        pass
+
+    def onDeath(self, all_players):
+        if self.type == "player":
+            i = 0
+            for player in all_players:
+                if player.alive:
+                    print(f"{i} - {player.name}")
+                    i += 1
+            n = int(input("Quelle personne voulez vous tuez ?"))
+            name = all_players[n].name
+            identity = all_players[n].__class__.__name__
+            print(f"Identité de {name} : {identity}")
+
+
+        return super().kill()
+
+class Sorciere(Villageois):
+    def turn(self, all_players):
+        pass

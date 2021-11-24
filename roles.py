@@ -28,7 +28,7 @@ class Villageois:
 class LoupGarou(Villageois):
     def turn(self, all_players, response):
         if self.type == "player":
-            print("Choix des autres loups-garous:", " ".join(map(str, response)))
+            print("Choix des autres loups-garous:", " - ".join(map(str, response)))
             i = 0
             for player in all_players:
                 if player.alive:

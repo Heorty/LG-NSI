@@ -60,8 +60,15 @@ class Voyante(Villageois):
                     print(f"{i} - {player.name}")
                     i += 1
             n = int(input("Quelle personne voulez vous sonder ?"))
-            name = all_players[n].name
-            identity = all_players[n].__class__.__name__
+            i = 0
+            for player in all_players:
+                if player.alive and not isinstance(player, Voyante):
+                    if i == n:
+                        choice = player
+                        break
+                    i += 1
+            name = choice.name
+            identity = choice.__class__.__name__
             print(f"Identité de {name} : {identity}")
 
 class Chasseur(Villageois):
@@ -77,8 +84,15 @@ class Chasseur(Villageois):
                     print(f"{i} - {player.name}")
                     i += 1
             n = int(input("Quelle personne voulez vous tuez ?"))
-            name = all_players[n].name
-            identity = all_players[n].__class__.__name__
+            i = 0
+            for player in all_players:
+                if player.alive and not isinstance(player, Voyante):
+                    if i == n:
+                        choice = player
+                        break
+                    i += 1
+            name = choice.name
+            identity = choice.__class__.__name__
             print(f"Identité de {name} : {identity}")
 
 

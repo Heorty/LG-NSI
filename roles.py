@@ -31,7 +31,6 @@ class LoupGarou(Villageois):
         super().__init__()
         self.className = "Loup Garou"
 
-
     def turn(self, all_players, response):
         if self.type == "player":
             print("Choix des autres loups-garous:",
@@ -64,6 +63,7 @@ class Voyante(Villageois):
             identity = all_players[n].__class__.__name__
             print(f"Identité de {name} : {identity}")
 
+
 class Chasseur(Villageois):
     def __init__(self):
         super().__init__()
@@ -73,16 +73,35 @@ class Chasseur(Villageois):
         if self.type == "player":
             i = 0
             for player in all_players:
-                if player.alive:
+                if player.alive and not isinstance(player, Sorciere):
                     print(f"{i} - {player.name}")
                     i += 1
-            n = int(input("Quelle personne voulez vous tuez ?"))
-            name = all_players[n].name
-            identity = all_players[n].__class__.__name__
-            print(f"Identité de {name} : {identity}")
-
-
-        return super().onDeath(all_players)
+                    n = int(input("Quelle personne voulez vous tuez ?"))
+                    i = 0
+            for player in all_players:
+                if player.alive and not isinstance(player, Sorciere):
+                        if i == n:
+                            killed = player
+                            break
+                        i += 1
+            return {
+                "saved": False,
+                "killed": killed
+            }
+        else:
+            n = random.randint(0, sum(player.alive and not isinstance(player, Sorciere) for player in all_players)-1)
+            i = 0
+            for player in all_players:
+                if player.alive and not isinstance(player, Sorciere):
+                    if i == n:
+                        killed = player
+                        break
+                    i += 1
+            return {
+                "saved": False,
+                "killed": killed
+                }
+            
 
 class Sorciere(Villageois):
     def __init__(self):

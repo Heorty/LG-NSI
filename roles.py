@@ -11,6 +11,7 @@ for row in csvfile:
 
 class Villageois:
     def __init__(self):
+        self.classType = "Simple villageois"
         self.type = "bot"
         self.name = random.choice(prenoms)
         self.alive = True
@@ -41,6 +42,11 @@ class LoupGarou(Villageois):
 
 
 class Voyante(Villageois):
+
+    def __init__(self):
+        super().__init__(2)
+        self.classType = "Voyante"
+
     def turn(self, all_players):
         if self.type == "player":
             i = 0

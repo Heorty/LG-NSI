@@ -7,16 +7,18 @@ import roles
 
 
 players = {
-    "villageois": [roles.Villageois() for _ in range(3)],
-    "loups_garous": [roles.LoupGarou() for _ in range(3)],
+    "villageois": [roles.Villageois() for _ in range(4)],
+    "loups_garous": [roles.LoupGarou() for _ in range(5)],
     "voyante": [roles.Voyante()]
-
 }
 random.choice(list(players.values()))[-1].set_player()
 
 
 def get_all_players(players: Dict[str, roles.Villageois]):
-    return sum(players.values(), [])
+    randomizedPlayers = sum(players.values(), [])
+    random.shuffle(randomizedPlayers)
+    return randomizedPlayers
+
 
 
 game = True

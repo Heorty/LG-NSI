@@ -30,8 +30,12 @@ def sorciere(dodo: bool):
 
 def finnuit():
     phanuit = ["Le soleil se lève et le village se réveil",
-               "En cette nuit plutôt mouvementé, le village se réveil"]
+               "En cette nuit plutôt mouvementé, le village se réveil",""]
     return random.choice(phanuit)
 
 def chasseur():
     print("Le chasseur, par son dernier souffle, parti avec la personne qui lui a causé le plus de soupçons")
+
+def vote():
+    Pvote = ["il est midi, l'heure de la rénunion des villageois suer la place de la mairie. \nEnsemble ils choisiront pour tenter, par toute leur forces de tuer un  loup et de sauver le plus de villageois",
+    "la cloche sonne, c'est l'heure pour les villageois de se retrouver et de décider qui ils vont mettre au buchet... Le choix seras cruciale"]

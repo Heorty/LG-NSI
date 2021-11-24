@@ -6,10 +6,10 @@ import lore
 
 players = {
     "villageois": [roles.Villageois() for _ in range(4)],
-    "loups_garous": [roles.LoupGarou() for _ in range(5)],
     "voyante": [roles.Voyante()],
     "chasseur": [roles.Chasseur()],
-    "sorciere": [roles.Sorciere()]
+    "sorciere": [roles.Sorciere()],
+    "loups_garous": [roles.LoupGarou() for _ in range(7)]
 }
 random.choice(list(players.values()))[-1].set_player()
 

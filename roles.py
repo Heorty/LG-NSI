@@ -11,7 +11,7 @@ for row in csvfile:
 
 class Villageois:
     def __init__(self):
-        self.classType = "Simple villageois"
+        self.className = "Simple villageois"
         self.type = "bot"
         self.name = random.choice(prenoms)
         self.alive = True
@@ -27,6 +27,11 @@ class Villageois:
 
 
 class LoupGarou(Villageois):
+    def __init__(self):
+        super().__init__()
+        self.className = "Loup Garou"
+
+
     def turn(self, all_players, response):
         if self.type == "player":
             print("Choix des autres loups-garous:",
@@ -43,10 +48,13 @@ class LoupGarou(Villageois):
 
 
 class Voyante(Villageois):
+    def __init__(self):
+        super().__init__()
+        self.className = "Voyante"
 
     def __init__(self):
         super().__init__(2)
-        self.classType = "Voyante"
+        self.className = "Voyante"
 
     def turn(self, all_players):
         if self.type == "player":
@@ -61,6 +69,10 @@ class Voyante(Villageois):
             print(f"Identité de {name} : {identity}")
 
 class Chasseur(Villageois):
+    def __init__(self):
+        super().__init__()
+        self.className = "Chasseur"
+
     def onDeath(self, all_players):
         if self.type == "player":
             i = 0
@@ -77,5 +89,9 @@ class Chasseur(Villageois):
         return super().kill()
 
 class Sorciere(Villageois):
+    def __init__(self):
+        super().__init__()
+        self.className = "Chasseur"
+
     def turn(self, all_players, killed):
         pass

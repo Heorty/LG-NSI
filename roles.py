@@ -55,9 +55,6 @@ class Voyante(Villageois):
             print(f"Identité de {name} : {identity}")
 
 class Chasseur(Villageois):
-    def turn(self, all_players):
-        pass
-
     def onDeath(self, all_players):
         if self.type == "player":
             i = 0
@@ -74,5 +71,5 @@ class Chasseur(Villageois):
         return super().kill()
 
 class Sorciere(Villageois):
-    def turn(self, all_players):
+    def turn(self, all_players, killed):
         pass

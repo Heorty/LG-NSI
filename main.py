@@ -7,7 +7,9 @@ import lore
 players = {
     "villageois": [roles.Villageois() for _ in range(3)],
     "loups_garous": [roles.LoupGarou() for _ in range(3)],
-    "voyante": [roles.Voyante()]
+    "voyante": [roles.Voyante()],
+    "chasseur": [roles.Chasseur()],
+    "sorciere": [roles.Sorciere()]
 }
 random.choice(list(players.values()))[-1].set_player()
 
@@ -33,5 +35,8 @@ while game:
     for player in get_all_players(players):
         if player.alive and not isinstance(player, roles.LoupGarou) and i == response[-1]:
             killed = player
+    
+    print("La sorciere")
+    players["sorciere"][0].turn(get_all_players(players), killed)
 
     input("pass")

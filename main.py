@@ -20,7 +20,6 @@ def get_all_players(players: Dict[str, roles.Villageois]):
     return randomizedPlayers
 
 
-
 game = True
 
 
@@ -54,5 +53,4 @@ while game:
         sorciere_choice.get("killed").onDeath(turn)
     lore.sorciere(True)
 
-
-    input("pass")
+    input("passsss")

@@ -45,7 +45,7 @@ class LoupGarou(Villageois):
 class Voyante(Villageois):
 
     def __init__(self):
-        super().__init__(2)
+        super().__init__()
         self.classType = "Voyante"
 
     def turn(self, all_players):
@@ -92,6 +92,7 @@ class Sorciere(Villageois):
                 choice = int(input("sauver (0), ne rien faire (1), tuer (2)"))
                 if choice == 0:
                     if self.potions["save"]:
+                        self.potions["save"] = False
                         return {
                             "saved": True
                         }
@@ -102,19 +103,53 @@ class Sorciere(Villageois):
                         "saved": False
                     }
                 elif choice == 2:
+                    if self.potions["kill"]:
+                        self.potions["kill"] = False
+                        i = 0
+                        for player in all_players:
+                            if player.alive and not isinstance(player, Sorciere):
+                                print(f"{i} - {player.name}")
+                                i += 1
+                        n = int(input("Quelle personne voulez vous tuez ?"))
+                        i = 0
+                        for player in all_players:
+                            if player.alive and not isinstance(player, Sorciere):
+                                if i == n:
+                                    killed = player
+                                    break
+                                i += 1
+                        return {
+                            "saved": False,
+                            "killed": killed
+                        }
+                    else:
+                        print("vous ne pouvez pas réutiliser cette potion")
+        else:
+            while True:
+                choice = random.randint(0, 2)
+                if choice == 0 and self.potions["save"]:
+                    self.potions["save"] = False
+                    return {
+                        "saved": True
+                    }
+                elif choice == 1:
+                    return {
+                        "saved": False
+                    }
+                elif choice == 2 and self.potions["kill"]:
+                    self.potions["kill"] = False
+                    n = random.randint(0, sum(player.alive and not isinstance(player, Sorciere) for player in all_players)-1)
                     i = 0
                     for player in all_players:
                         if player.alive and not isinstance(player, Sorciere):
-                            print(f"{i} - {player.name}")
+                            if i == n:
+                                killed = player
+                                break
                             i += 1
-                    n = int(input("Quelle personne voulez vous tuez ?"))
-                    for player in get_all_players(players):
-                        if player.alive and not isinstance(player, Sorciere) and i == n:
-                            killed = player
-                            break
                     return {
                         "saved": False,
                         "killed": killed
                     }
+
 
 

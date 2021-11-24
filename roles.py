@@ -21,7 +21,7 @@ class Villageois:
     def turn(self, all_players):
         pass
 
-    def onDeath(self, all_players):
+    def onDeath(self):
         self.alive = False
 
 
@@ -36,6 +36,7 @@ class LoupGarou(Villageois):
                     print(f"{i} - {player.name}")
                     i += 1
             n = int(input("Quelle personne voulez vous tuer ?"))
+            return n
         else:
             return random.randint(0, sum(player.alive and not isinstance(player, LoupGarou) for player in all_players)-1)
 

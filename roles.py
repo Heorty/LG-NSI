@@ -22,7 +22,7 @@ class Villageois:
     def turn(self, all_players):
         pass
 
-    def onDeath(self):
+    def onDeath(self, all_players):
         self.alive = False
 
 
@@ -82,7 +82,7 @@ class Chasseur(Villageois):
             print(f"Identité de {name} : {identity}")
 
 
-        return super().kill()
+        return super().onDeath(all_players)
 
 class Sorciere(Villageois):
     def __init__(self):
@@ -159,6 +159,3 @@ class Sorciere(Villageois):
                         "saved": False,
                         "killed": killed
                     }
-
-
-

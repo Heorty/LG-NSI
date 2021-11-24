@@ -5,8 +5,8 @@ import lore
 
 
 players = {
-    "villageois": [roles.Villageois() for _ in range(3)],
-    "loups_garous": [roles.LoupGarou() for _ in range(3)],
+    "villageois": [roles.Villageois() for _ in range(4)],
+    "loups_garous": [roles.LoupGarou() for _ in range(5)],
     "voyante": [roles.Voyante()],
     "chasseur": [roles.Chasseur()],
     "sorciere": [roles.Sorciere()]
@@ -35,6 +35,7 @@ while game:
     for player in get_all_players(players):
         if player.alive and not isinstance(player, roles.LoupGarou) and i == response[-1]:
             killed = player
+            break
     
     print("La sorciere")
     players["sorciere"][0].turn(get_all_players(players), killed)

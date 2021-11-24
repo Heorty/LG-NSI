@@ -71,5 +71,44 @@ class Chasseur(Villageois):
         return super().kill()
 
 class Sorciere(Villageois):
+    def __init__(self):
+        super().__init__()
+        self.potions = {
+            "save": True,
+            "kill": True
+        }
+
     def turn(self, all_players, killed):
-        pass
+        if self.type == "player":
+            print(f"Cette personne a été tué: {killed.name}")
+            print("Voulez-vous la sauver, ne rien faire ou tuer une autre personne?")
+            while True:
+                choice = int(input("sauver (0), ne rien faire (1), tuer (2)"))
+                if choice == 0:
+                    if self.potions["save"]:
+                        return {
+                            "saved": True
+                        }
+                    else:
+                        print("vous ne pouvez pas réutiliser cette potion")
+                elif choice == 1:
+                    return {
+                        "saved": False
+                    }
+                elif choice == 2:
+                    i = 0
+                    for player in all_players:
+                        if player.alive and not isinstance(player, Sorciere):
+                            print(f"{i} - {player.name}")
+                            i += 1
+                    n = int(input("Quelle personne voulez vous tuez ?"))
+                    for player in get_all_players(players):
+                        if player.alive and not isinstance(player, Sorciere) and i == n:
+                            killed = player
+                            break
+                    return {
+                        "saved": False,
+                        "killed": killed
+                    }
+
+

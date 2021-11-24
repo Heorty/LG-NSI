@@ -1,0 +1,4 @@
+ajoutez les differents role :
+    - chasseur
+    - loup garou
+    - sv

@@ -129,5 +129,3 @@ class Sorciere(Villageois):
                         "saved": False,
                         "killed": killed
                     }
-
-

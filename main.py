@@ -45,13 +45,14 @@ while game:
             i += 1
     lore.loup_garou(True)
 
-
+    lore.sorciere(False)
     sorciere_choice = players["sorciere"][0].turn(turn, killed)
 
     if not sorciere_choice.get("save"):
         killed.onDeath(turn)
     if sorciere_choice.get("killed"):
         sorciere_choice.get("killed").onDeath(turn)
+    lore.sorciere(True)
 
 
     input("pass")

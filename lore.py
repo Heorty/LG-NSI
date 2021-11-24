@@ -14,14 +14,14 @@ def voyante(dodo: bool):
         print('la voyante se réveille')
 
 
-def loup_garoup(dodo: bool):
+def loup_garou(dodo: bool):
     if dodo:
         print('les loups-garous repus se rendorment et rêvent de prochaine victimes')
     else:
         print('les loups-garou se réveillent')
 
 
-def sorcière(dodo: bool):
+def sorciere(dodo: bool):
     if dodo:
         print('la sorcière, après avoir épuisé ses potions, se rendort')
     else:

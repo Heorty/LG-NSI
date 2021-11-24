@@ -44,7 +44,7 @@ class LoupGarou(Villageois):
             n = int(input("Quelle personne voulez vous tuer ?"))
             return n
         else:
-            return random.randint(0, sum(player.alive and not isinstance(player, LoupGarou) for player in all_players)-1)
+            return random.randint(0, sum(player.alive and not isinstance(player, LoupGarou) for player in all_players))
 
 
 class Voyante(Villageois):
@@ -161,7 +161,7 @@ class Sorciere(Villageois):
                     }
                 elif choice == 2 and self.potions["kill"]:
                     self.potions["kill"] = False
-                    n = random.randint(0, sum(player.alive and not isinstance(player, Sorciere) for player in all_players)-1)
+                    n = random.randint(0, sum(player.alive and not isinstance(player, Sorciere) for player in all_players))
                     i = 0
                     for player in all_players:
                         if player.alive and not isinstance(player, Sorciere):
